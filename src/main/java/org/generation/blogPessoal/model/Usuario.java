@@ -60,4 +60,15 @@ public class Usuario {
 		this.senha = senha;
 	}
 
+	public Usuario(long id, String nome, String usuario, String senha) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+	}
+
+	public Usuario() {
+	}
+
 }
