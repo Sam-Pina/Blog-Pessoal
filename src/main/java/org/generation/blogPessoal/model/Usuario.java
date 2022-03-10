@@ -8,6 +8,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {
@@ -22,11 +24,24 @@ public class Usuario {
 	
 	@NotNull
 	@Size(min = 2, max = 100)
+	@Schema(example = "email@email.com.br")
 	private String usuario;
 	
 	@NotNull
 	@Size(min = 2, max = 100)
 	private String senha;
+	
+	public Usuario(long id, String nome, String usuario, String senha) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+	}
+
+	public Usuario() {
+	}
+
 
 	public long getId() {
 		return id;
@@ -60,15 +75,5 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public Usuario(long id, String nome, String usuario, String senha) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.usuario = usuario;
-		this.senha = senha;
-	}
-
-	public Usuario() {
-	}
-
+	
 }
