@@ -10,6 +10,7 @@ import org.generation.blogPessoal.model.Usuario;
 import org.generation.blogPessoal.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -51,7 +52,7 @@ public class UsuarioService {
 		return null;
 	}
 	
-	public Optional<Usuario> atualizarUsuario(Usuario usuario) {
+	public ResponseEntity<Usuario> atualizarUsuario(Usuario usuario) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
 		if (repository.findById(usuario.getId()).isPresent()) {
@@ -59,14 +60,14 @@ public class UsuarioService {
 			Optional<Usuario> buscaUsuario = repository.findByUsuario(usuario.getUsuario());
 
 			if ((buscaUsuario.isPresent()) && (buscaUsuario.get().getId() != usuario.getId()))
-				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!");
 
 			usuario.setSenha(encoder.encode(usuario.getSenha()));
-			return Optional.ofNullable(repository.save(usuario));
+			return ResponseEntity.ok(repository.save(usuario));
 
 		}
 
-		return Optional.empty();
+		throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "ID não existe");
 	}
 	
 }
