@@ -19,6 +19,13 @@
 	
 	<dependencies>
 
+    	<!-- Postgree dependence -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+
+
 		<!-- Swagger dependence -->
 		<dependency>
 			<groupId>org.springdoc</groupId>

@@ -82,12 +82,12 @@ public class UsuarioControllerTest {
 		Optional<Usuario> usuarioCreate = usuarioService.cadastrarUsuario(new Usuario(0L, "João Mesquita", "joao@email.com.br", "1234"));
 		
 		//WHEN
-		Usuario usuarioUpdate = new Usuario(0L, "João Mesquita Silva", "joaosilva@email.com.br", "134652783");
+		Usuario usuarioUpdate = new Usuario(0L, "João Mesquita Silva", "joaosilva@email.com.br", "1234");
 		
 		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(usuarioUpdate);
 
 		ResponseEntity<Usuario> resposta = testRestTemplate
-			.withBasicAuth("João Mesquita", "1234")
+			.withBasicAuth("joao@email.com.br", "1234")
 			.exchange("/usuarios/atualizar", HttpMethod.PUT, requisicao, Usuario.class);
 		
 		//THEN
