@@ -49,7 +49,7 @@ public class UsuarioControllerTest {
 	@DisplayName("Cadastrar Um Usuário")
 	public void deveCriarUmUsuario() {
 
-		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(new Usuario(0L, "João Mesquita", "joao@email.com.br", "13465278"));
+		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(new Usuario(0L, "João Mesquita", "joao@email.com.br","https://i.imgur.com/JR7kUFU.jpg\"", "13465278"));
 
 		ResponseEntity<Usuario> resposta = testRestTemplate
 			.exchange("/usuarios/cadastrar", HttpMethod.POST, requisicao, Usuario.class);
@@ -64,9 +64,9 @@ public class UsuarioControllerTest {
 	@DisplayName("Não deve permitir duplicação do Usuário")
 	public void naoDeveDuplicarUsuario() {
 
-		usuarioService.cadastrarUsuario(new Usuario(0L, "Mariana Souza", "mariana@email.com.br", "13465278"));
+		usuarioService.cadastrarUsuario(new Usuario(0L, "Mariana Souza", "mariana@email.com.br","https://i.imgur.com/T12NIp9.jpg", "13465278"));
 
-		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(new Usuario(0L, "Mariana Souza", "mariana@email.com.br", "13465278"));
+		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(new Usuario(0L, "Mariana Souza", "mariana@email.com.br","https://i.imgur.com/T12NIp9.jpg", "13465278"));
 
 		ResponseEntity<Usuario> resposta = testRestTemplate
 			.exchange("/usuarios/cadastrar", HttpMethod.POST, requisicao, Usuario.class);
@@ -79,10 +79,10 @@ public class UsuarioControllerTest {
 	@DisplayName("Atualizar um Usuário")
 	public void deveAtualizarUmUsuario() {
 		//GIVEN
-		Optional<Usuario> usuarioCreate = usuarioService.cadastrarUsuario(new Usuario(0L, "João Mesquita", "joao@email.com.br", "1234"));
+		Optional<Usuario> usuarioCreate = usuarioService.cadastrarUsuario(new Usuario(0L, "João Mesquita", "joao@email.com.br","https://i.imgur.com/Sk5SjWE.jpg", "1234"));
 		
 		//WHEN
-		Usuario usuarioUpdate = new Usuario(1L, "João Mesquita Silva", "joao@email.com.br", "1234");
+		Usuario usuarioUpdate = new Usuario(1L, "João Mesquita Silva", "joao@email.com.br","https://i.imgur.com/Sk5SjWE.jpg", "1234");
 		
 		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(usuarioUpdate);
 
@@ -101,9 +101,9 @@ public class UsuarioControllerTest {
 	@DisplayName("Listar todos os Usuários")
 	public void deveMostrarTodosUsuarios() {
 
-		usuarioService.cadastrarUsuario(new Usuario(0L, "Michael Sanches", "michael_sanches@email.com.br", "michael123"));
+		usuarioService.cadastrarUsuario(new Usuario(0L, "Michael Sanches", "michael_sanches@email.com.br","https://i.imgur.com/Sk5SjWE.jpg", "michael123"));
 		
-		usuarioService.cadastrarUsuario(new Usuario(0L, "Angela Rodrigues",  "angela_rodrigues@email.com.br", "angela123"));
+		usuarioService.cadastrarUsuario(new Usuario(0L, "Angela Rodrigues",  "angela_rodrigues@email.com.br","https://i.imgur.com/yDRVeK7.jpg", "angela123"));
 
 		ResponseEntity<String> resposta = testRestTemplate
 			.withBasicAuth("Samuel", "1234")

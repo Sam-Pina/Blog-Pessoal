@@ -15,6 +15,22 @@ import io.swagger.v3.oas.models.responses.ApiResponses;
 @Configuration
 public class SwaggerConfig {
 	
+	/**
+	 * English:
+	 * This Spring Core annotation indicates that a method produces a bean to be managed by the Spring container. 
+	 * This is commonly used in classes annotated with the @Configuration annotation in Java based configuration in Spring. 
+	 * Basically when you put the @Bean annotation, you are telling Spring that you want to create this object and 
+	 * make it available for other classes to use it as a dependency, for example.
+	 * 
+	 * Portuguese:
+     * Esta anotação do Spring Core indica que um método produz um bean a ser gerenciado pelo contêiner do Spring. 
+     * Isso é comumente usado nas classes anotadas com a anotação @Configuration na configuração baseada em Java no Spring. 
+     * Basicamente quando você coloca a anotação @Bean, você está dizendo para Spring que quer criar esse objeto e 
+     * deixar ele disponível para outras classes utilizarem ele como dependência, por exemplo.
+     * 
+     * @author Samuel
+     * @since final version 03/13/22(eng); versão final 13/03/22(pt-br);
+     */
 	@Bean
 	public OpenAPI springBlogPessoalOpenAPI() {
 		return new OpenAPI()
@@ -33,6 +49,13 @@ public class SwaggerConfig {
 					.description("Github Project")
 					.url("https://github.com/Sam-Pina/Blog-Pessoal"));
 	}
+	
+
+    /**
+     * A Classe OpenApiCustomiser permite personalizar o Swagger, baseado na 
+     * Especificação OpenAPI. O Método abaixo, personaliza todas as mensagens 
+     * HTTP Responses (Respostas das requisições) do Swagger.
+     */
 	
 	@Bean
 	public OpenApiCustomiser customerGlobalHeaderOpenApiCustomiser() {

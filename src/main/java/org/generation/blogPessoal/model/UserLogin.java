@@ -1,22 +1,28 @@
 package org.generation.blogPessoal.model;
 
-public class UserLogin 
+public class UserLogin {
 
-	{public UserLogin(String nome, String usuario, String senha, String token) {
-		this.nome = nome;
-		this.usuario = usuario;
-		this.senha = senha;
-		this.token = token;
-	}
-	
+	private long id;
 
 	private String nome;
-	
+
 	private String usuario;
-	
+
+	private String foto;
+
 	private String senha;
-	
+
 	private String token;
+
+	/* Insira os Getters and Setters */
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public String getNome() {
 		return nome;
@@ -28,6 +34,22 @@ public class UserLogin
 
 	public String getUsuario() {
 		return usuario;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	public void setUsuario(String usuario) {
@@ -42,13 +64,4 @@ public class UserLogin
 		this.senha = senha;
 	}
 
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-
-	
 }
