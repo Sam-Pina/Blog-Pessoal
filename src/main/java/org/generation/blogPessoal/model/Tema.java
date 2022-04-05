@@ -27,14 +27,15 @@ public class Tema {
 	@OneToMany(mappedBy = "tema", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("tema")
 	private List<Postagem> postagem;
+	
 
-	/*Insira os Getters and Setters*/
-
-	public long getId() {
+	/*Insira os Getters and Setters classe tema*/
+	
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -53,4 +54,6 @@ public class Tema {
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
 	}
-}
+
+	}
+
